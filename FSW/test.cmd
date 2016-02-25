@@ -1,0 +1,1 @@
+FileSystemWatcher "C:\Users\WuShimu\Documents\ecdmp\Server_Items\FileSystemWatcher\FileSystemWatcher\bin\sample" 2000 "C:\Users\WuShimu\Documents\ecdmp\server_items\FileSystemWatcher\FileSystemWatcher\bin\sample_script\hello_world.py" "C:\Program Files (x86)\Python\python.exe"

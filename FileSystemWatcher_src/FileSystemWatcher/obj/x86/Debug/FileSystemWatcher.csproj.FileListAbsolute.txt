@@ -1,0 +1,8 @@
+C:\Users\DanB\Documents\Visual Studio 2013\Projects\ECDMP\FileSystemWatcher\FileSystemWatcher\bin\Debug\FileSystemWatcher.exe
+C:\Users\DanB\Documents\Visual Studio 2013\Projects\ECDMP\FileSystemWatcher\FileSystemWatcher\bin\Debug\FileSystemWatcher.pdb
+C:\Users\DanB\Documents\Visual Studio 2013\Projects\ECDMP\FileSystemWatcher\FileSystemWatcher\bin\Debug\ICSharpCode.SharpZipLib.dll
+C:\Users\DanB\Documents\Visual Studio 2013\Projects\ECDMP\FileSystemWatcher\FileSystemWatcher\bin\Debug\Newtonsoft.Json.dll
+C:\Users\DanB\Documents\Visual Studio 2013\Projects\ECDMP\FileSystemWatcher\FileSystemWatcher\bin\Debug\Newtonsoft.Json.pdb
+C:\Users\DanB\Documents\Visual Studio 2013\Projects\ECDMP\FileSystemWatcher\FileSystemWatcher\bin\Debug\Newtonsoft.Json.xml
+C:\Users\DanB\Documents\Visual Studio 2013\Projects\ECDMP\FileSystemWatcher\FileSystemWatcher\obj\x86\Debug\FileSystemWatcher.exe
+C:\Users\DanB\Documents\Visual Studio 2013\Projects\ECDMP\FileSystemWatcher\FileSystemWatcher\obj\x86\Debug\FileSystemWatcher.pdb

@@ -1,0 +1,143 @@
+WHAT ARE YOU DOING?!!! YOU SHOULD NOT BE READING THIS FILE. IT IS STRICTLY FORBIDDEN. THERE SHOULD BE NO REASON WHY YOU'RE READING THIS FILE, ABSOLUTELY NONE. ANY CHANGES SHOULD BE DONE VIA THE CONFIG EDITOR. IF YOU FORCIFULLY EDIT THIS FILE, ALL HELL WILL BREAK LOSE.
+
+Thank you for your cooperation,
+Developers of the Almighty JSON Config Editor
+
+{
+    "name": "(root)",
+    "type": "Object",
+    "description": "",
+    "fields": [
+        {
+            "name": "serverName",
+            "type": "String",
+            "value": "142.135.82.123",
+            "description": "",
+            "visibleText": false
+        },
+        {
+            "name": "port",
+            "type": "Integer",
+            "value": 80,
+            "description": ""
+        },
+        {
+            "name": "templatePath",
+            "type": "String",
+            "value": "C:/ECDMP/ECDMP_py/workflow_py/Code/PubTemplate10.mxd",
+            "description": "",
+            "visibleText": false
+        },
+        {
+            "name": "connFilePath",
+            "type": "String",
+            "value": "C:/ECDMP/ECDMP_py/workflow_py/Code/publisher.ags",
+            "description": "",
+            "visibleText": false
+        },
+        {
+            "name": "smallkeyPath",
+            "type": "Collection",
+            "description": "",
+            "fields": [
+                {
+                    "name": "0",
+                    "type": "String",
+                    "value": "config",
+                    "description": "",
+                    "visibleText": false
+                },
+                {
+                    "name": "1",
+                    "type": "String",
+                    "value": "SmallKey",
+                    "description": "",
+                    "visibleText": false
+                }
+            ]
+        },
+        {
+            "name": "pubStatus",
+            "type": "Collection",
+            "description": "",
+            "fields": [
+                {
+                    "name": "0",
+                    "type": "String",
+                    "value": "config",
+                    "description": "",
+                    "visibleText": false
+                },
+                {
+                    "name": "1",
+                    "type": "String",
+                    "value": "Status",
+                    "description": "",
+                    "visibleText": false
+                }
+            ]
+        },
+        {
+            "name": "hashPath",
+            "type": "Collection",
+            "description": "",
+            "fields": [
+                {
+                    "name": "0",
+                    "type": "String",
+                    "value": "config",
+                    "description": "",
+                    "visibleText": false
+                },
+                {
+                    "name": "1",
+                    "type": "String",
+                    "value": "SHA_256_HASH",
+                    "description": "",
+                    "visibleText": false
+                }
+            ]
+        },
+        {
+            "name": "checkHash",
+            "type": "Boolean",
+            "value": false,
+            "description": ""
+        },
+        {
+            "name": "folder",
+            "type": "String",
+            "value": "data-donnees",
+            "description": "",
+            "visibleText": false
+        },
+        {
+            "name": "makeDescriptorUrl",
+            "type": "String",
+            "value": "http://sncr01wbingsdv1.ncr.int.ec.gc.ca/ecdmp_service_af/makeDescriptor",
+            "description": "",
+            "visibleText": false
+        },
+        {
+            "name": "geocatUrl",
+            "type": "String",
+            "value": "http://donnees-data.intranet.ec.gc.ca/geonetwork/srv/eng/metadata.addmapresources",
+            "description": "",
+            "visibleText": false
+        },
+        {
+            "name": "geocatUsername",
+            "type": "String",
+            "value": "admin",
+            "description": "",
+            "visibleText": false
+        },
+        {
+            "name": "geocatPassword",
+            "type": "String",
+            "value": "badmd1",
+            "description": "",
+            "visibleText": false
+        }
+    ]
+}

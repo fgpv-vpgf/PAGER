@@ -1,0 +1,30 @@
+{
+    "serverName": "wbur01dttrain9",
+    "port": "80",
+    "agsUsername": "arcgis",
+    "agsPassword": "@RCGIS42",
+    "templatePath": "C:/ECDMP/Workflow/ECDMP_py/workflow_py/Code/PubTemplate10.mxd",
+    "connFilePath": "C:/ECDMP/Workflow/ECDMP_py/workflow_py/Code/publisher_edn.ags",
+    "smallkeyPath": [
+        "config",
+        "SmallKey"
+    ],
+    "pubStatus": [
+        "config",
+        "Status"
+    ],
+    "hashPath": [
+        "config",
+        "SHA_256_HASH"
+    ],
+    "checkHash": false,
+    "folder": "data_donnees",
+    "makeDescriptorUrl": "http://wbur01dttrain9/ECDMPService/makeDescriptor/",
+    "geocatUrl": "http://intranet.ecdmp-dev.cmc.ec.gc.ca/geonetwork/srv/eng/metadata.addmapresources",
+    "geocatUsername": "admin",
+    "geocatPassword": "badmd1",
+    "smtpservername": "ncrxbh.ncr.int.ec.gc.ca",
+    "fromaddress": "BASD-PAGER-Do-Not-Reply@ec.gc.ca",
+    "toaddresses":"Hua.Wan@ec.gc.ca,hwan@esri.ca",
+    "metaDataUrl": "http://intranet.ecdmp-stage.cmc.ec.gc.ca/geonetwork/srv/eng/csw?service=CSW&version=2.0.2&request=GetRecordById&outputSchema=csw:IsoRecord&id="
+}

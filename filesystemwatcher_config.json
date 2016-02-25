@@ -1,0 +1,30 @@
+{
+    "serverName": "Name or Address for ArcGIS Server",
+    "port": "80",
+    "agsUsername": "ArcGIS Account",
+    "agsPassword": "ArcGIS Password",
+    "templatePath": "C:/PAGER/PAGER_Scripts/PubTemplate10.mxd",
+    "connFilePath": "Compile ArcGIS credentials file using make_ags.py",
+    "smallkeyPath": [
+        "config",
+        "SmallKey"
+    ],
+    "pubStatus": [
+        "config",
+        "Status"
+    ],
+    "hashPath": [
+        "config",
+        "SHA_256_HASH"
+    ],
+    "checkHash": false,
+    "folder": "data_donnees",
+    "geocatUrl": "http://intranet.ecdmp-dev.cmc.ec.gc.ca/geonetwork/srv/eng/metadata.addmapresources",
+    "geocatUsername": "admin",
+    "geocatPassword": "badmd1",
+    "smtpservername": "sdow04exmail2.ontario.int.ec.gc.ca",
+    "fromaddress": "PAGER-Do-Not-Reply@ec.gc.ca",
+    "toaddresses":"Separated by semi-colons",
+    "metaDataUrl": "http://intranet.ecdmp-dev.cmc.ec.gc.ca/geonetwork/srv/eng/csw?service=CSW&version=2.0.2&request=GetRecordById&outputSchema=csw:IsoRecord&id=",
+    "webAdaptorName": "URL for web adapter if different from serverName"
+}
