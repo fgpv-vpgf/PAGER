@@ -296,7 +296,7 @@ def getFirstElement(nodeList, tagName):
     return nodeList.item(0).getElementsByTagName(tagName)
 
 
-def getMetadata(workspace, smallKey):
+def getMetadata(workspace, smallKey, logs):
     """Gets the metadata records (Eng/Fr) from supplied XML and returns a dictionary.
 
     Args:
@@ -351,25 +351,38 @@ def getMetadata(workspace, smallKey):
     propList["abstract"] = joinStrings((getEnglishText(abstractNode), getFrenchText(abstractNode)))
 
     #Drill down to position node
-    pointOfContactNode = getFirstElement(identificationInfoNode, "gmd:pointOfContact")
-    positionNameNode = getFirstElement(pointOfContactNode, "gmd:positionName")
-    propList["contactPosition"] = joinStrings((getEnglishText(positionNameNode), getFrenchText(positionNameNode)))
-    propList["positionName"] = propList["contactPosition"]
+    try:
+        pointOfContactNode = getFirstElement(identificationInfoNode, "gmd:pointOfContact")
+        positionNameNode = getFirstElement(pointOfContactNode, "gmd:positionName")
+        propList["contactPosition"] = joinStrings((getEnglishText(positionNameNode), getFrenchText(positionNameNode)))
+    except:
+        propList["contactPosition"] = ""
+        
+    try:    
+        propList["positionName"] = propList["contactPosition"]
+    except:
+        propList["positionName"] = ""
 
     #Drill down to first keyword node
-    descriptiveKeywordsNode = getFirstElement(identificationInfoNode, "gmd:descriptiveKeywords")
-    keywordNode = getFirstElement(descriptiveKeywordsNode, "gmd:keyword")
-    propList["keyword"] = joinStrings((getEnglishText(keywordNode), getFrenchText(keywordNode)), ", ")
+    try: 
+        descriptiveKeywordsNode = getFirstElement(identificationInfoNode, "gmd:descriptiveKeywords")
+        keywordNode = getFirstElement(descriptiveKeywordsNode, "gmd:keyword")
+        propList["keyword"] = joinStrings((getEnglishText(keywordNode), getFrenchText(keywordNode)), ", ")
+    except: 
+        propList["keyword"] = ""
 
     #Drill down to constraints node
-    resourceConstraintsNode = getFirstElement(identificationInfoNode, "gmd:resourceConstraints")
-    otherConstraintsNode = getFirstElement(resourceConstraintsNode, "gmd:otherConstraints")
-    propList["accessConstraints"] = joinStrings((getEnglishText(otherConstraintsNode), getFrenchText(otherConstraintsNode)))
+    try: 
+        resourceConstraintsNode = getFirstElement(identificationInfoNode, "gmd:resourceConstraints")
+        otherConstraintsNode = getFirstElement(resourceConstraintsNode, "gmd:otherConstraints")
+        propList["accessConstraints"] = joinStrings((getEnglishText(otherConstraintsNode), getFrenchText(otherConstraintsNode)))
+    except:
+        propList["accessConstraints"] = ""
 
     return propList
 
 
-def enableCapabilities(soeType, sddraft, smallKey, workspace,logs):
+def enableCapabilities(soeType, sddraft, smallKey, workspace, logs):
     """Enable capabilities for the service and set maxRecordCount.
 
     Args:
@@ -381,9 +394,10 @@ def enableCapabilities(soeType, sddraft, smallKey, workspace,logs):
     Returns:
         Path to output .sddraft file.
     """
-
+    checkError.printLog(logs,"BREAK POINT 111")
     #Properties dictionary for WMS/WFS Service
-    propList = getMetadata(workspace, smallKey)
+    propList = getMetadata(workspace, smallKey, logs)  #THIS IS THE LINE CAUSING PROBLEMS
+    checkError.printLog(logs,"BREAK POINT 222")
     propList = escapeSpecialCharacters(propList)
 
     #New maxRecordCount to set for publishing services (default: 1000)
@@ -394,7 +408,7 @@ def enableCapabilities(soeType, sddraft, smallKey, workspace,logs):
 
     #Read the sddraft xml.
     doc = DOM.parse(sddraft)
-
+    checkError.printLog(logs,"BREAK POINT 333")
     #Find all elements named TypeName.  This is where the server object
     #extension (SOE) names are defined.
     typeNames = doc.getElementsByTagName('TypeName')
@@ -502,6 +516,10 @@ def publishMXD(inFolder, mxd, connPath, serviceName, folder, logs, summary=None,
     sddraft = workspace + "/" + service + '.sddraft'
     sd = workspace + "/" + service + '.sd'
     folderName = folder
+    checkError.printLog(logs, "  Service: " + service)
+    checkError.printLog(logs, "  Folder: " + folderName)
+    checkError.printLog(logs, "  SD Draft: " + sddraft)
+    checkError.printLog(logs, "  SD path: " + sd)
 
     # make sure the folder is registered with the server, if not, add it to the
     # datastore
@@ -512,15 +530,16 @@ def publishMXD(inFolder, mxd, connPath, serviceName, folder, logs, summary=None,
 
     # Create service definition draft
     # Data will be copied to server
-    # Syntax: CreateMapSDDraft(map_document, out_sddraft, service_name,
-    # {server_type}, {connection_file_path}, {copy_data_to_server},
-    # {folder_name}, {summary}, {tags})
+    # Syntax: CreateMapSDDraft(map_document, out_sddraft, service_name, {server_type}, {connection_file_path}, {copy_data_to_server}, {folder_name}, {summary}, {tags})
     arcpy.mapping.CreateMapSDDraft(mxd, sddraft, service, 'ARCGIS_SERVER', connPath, True, folderName, summary, tags)
 
     #Modify the sd to enable wms, wfs, and then wcs capabilities on the service
     soeType = ['WMSServer', 'WFSServer', 'GeoJSONServer']
-    ogcSDDraft = enableCapabilities(soeType, sddraft, service, workspace,logs)
-
+    
+    checkError.printLog(logs,"BREAK POINT 1")    
+    ogcSDDraft = enableCapabilities(soeType, sddraft, service, workspace, logs)  # THIS IS THE LINE CAUSING PROBLEMS!!!!
+    checkError.printLog(logs,"BREAK POINT 2")
+    
     # Analyze the service definition draft
     analysis = arcpy.mapping.AnalyzeForSD(ogcSDDraft)
 
@@ -540,7 +559,6 @@ def publishMXD(inFolder, mxd, connPath, serviceName, folder, logs, summary=None,
                 for layer in layerlist:
                      errorList= errorList+ layer.name,
                 checkError.printLog(logs,errorList)
-
 
     # Stage and upload the service if the sddraft analysis did not contain
     # errors
