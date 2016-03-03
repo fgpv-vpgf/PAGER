@@ -394,10 +394,8 @@ def enableCapabilities(soeType, sddraft, smallKey, workspace, logs):
     Returns:
         Path to output .sddraft file.
     """
-    checkError.printLog(logs,"BREAK POINT 111")
     #Properties dictionary for WMS/WFS Service
     propList = getMetadata(workspace, smallKey, logs)  #THIS IS THE LINE CAUSING PROBLEMS
-    checkError.printLog(logs,"BREAK POINT 222")
     propList = escapeSpecialCharacters(propList)
 
     #New maxRecordCount to set for publishing services (default: 1000)
@@ -408,7 +406,6 @@ def enableCapabilities(soeType, sddraft, smallKey, workspace, logs):
 
     #Read the sddraft xml.
     doc = DOM.parse(sddraft)
-    checkError.printLog(logs,"BREAK POINT 333")
     #Find all elements named TypeName.  This is where the server object
     #extension (SOE) names are defined.
     typeNames = doc.getElementsByTagName('TypeName')
@@ -536,9 +533,7 @@ def publishMXD(inFolder, mxd, connPath, serviceName, folder, logs, summary=None,
     #Modify the sd to enable wms, wfs, and then wcs capabilities on the service
     soeType = ['WMSServer', 'WFSServer', 'GeoJSONServer']
     
-    checkError.printLog(logs,"BREAK POINT 1")    
     ogcSDDraft = enableCapabilities(soeType, sddraft, service, workspace, logs)  # THIS IS THE LINE CAUSING PROBLEMS!!!!
-    checkError.printLog(logs,"BREAK POINT 2")
     
     # Analyze the service definition draft
     analysis = arcpy.mapping.AnalyzeForSD(ogcSDDraft)
